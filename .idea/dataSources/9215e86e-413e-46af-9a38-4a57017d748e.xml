@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - awsdatabase@mydqlinstance.cjhdnjqsawox.us-east-2.rds.amazonaws.com">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="awsdatabase">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="innodb"/>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <schema id="7" parent="1" name="sys"/>
+    <schema id="8" parent="1" name="tmp"/>
+    <table id="9" parent="2" name="seckill">
+      <Comment>秒杀库存表</Comment>
+    </table>
+    <table id="10" parent="2" name="success_killed">
+      <Comment>秒杀成功明细表</Comment>
+    </table>
+    <table id="11" parent="2" name="t_activities"/>
+    <table id="12" parent="2" name="t_activities_figure"/>
+    <table id="13" parent="2" name="t_areas_target"/>
+    <table id="14" parent="2" name="t_book_series"/>
+    <table id="15" parent="2" name="t_books"/>
+    <table id="16" parent="2" name="t_major_areas"/>
+    <table id="17" parent="2" name="t_punch_records"/>
+    <table id="18" parent="2" name="t_sub_areas"/>
+    <table id="19" parent="2" name="urler"/>
+    <column id="20" parent="9" name="seckill_id">
+      <Position>1</Position>
+      <Comment>商品库存id</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="21" parent="9" name="name">
+      <Position>2</Position>
+      <Comment>商品名称</Comment>
+      <DataType>varchar(120)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="9" name="number">
+      <Position>3</Position>
+      <Comment>商品数量</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="9" name="start_time">
+      <Position>4</Position>
+      <Comment>秒杀开启时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="9" name="end_time">
+      <Position>5</Position>
+      <Comment>秒杀结束时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="9" name="create_time">
+      <Position>6</Position>
+      <Comment>创建时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <index id="26" parent="9" name="idx_create_time">
+      <ColNames>create_time</ColNames>
+    </index>
+    <index id="27" parent="9" name="idx_end_time">
+      <ColNames>end_time</ColNames>
+    </index>
+    <index id="28" parent="9" name="idx_start_time">
+      <ColNames>start_time</ColNames>
+    </index>
+    <key id="29" parent="9" name="PRIMARY">
+      <ColNames>seckill_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="30" parent="10" name="seckill_id">
+      <Position>1</Position>
+      <Comment>秒杀商品id</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="31" parent="10" name="user_phone">
+      <Position>2</Position>
+      <Comment>用户手机号</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="10" name="state">
+      <Position>3</Position>
+      <Comment>状态标示:-1无效,0成功,1已付款</Comment>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;-1&apos;</DefaultExpression>
+    </column>
+    <column id="33" parent="10" name="create_time">
+      <Position>4</Position>
+      <Comment>创建时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="34" parent="10" name="idx_create_time">
+      <ColNames>create_time</ColNames>
+    </index>
+    <key id="35" parent="10" name="PRIMARY">
+      <ColNames>seckill_id
+user_phone</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="36" parent="11" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="37" parent="11" name="title">
+      <Position>2</Position>
+      <Comment>活动名称</Comment>
+      <DataType>varchar(45)|0</DataType>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="38" parent="11" name="place">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="39" parent="11" name="type">
+      <Position>4</Position>
+      <Comment>五大领域</Comment>
+      <DataType>varchar(45)|0</DataType>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="40" parent="11" name="subtype">
+      <Position>5</Position>
+      <Comment>五大领域细分</Comment>
+      <DataType>varchar(45)|0</DataType>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="41" parent="11" name="content">
+      <Position>6</Position>
+      <Comment>教学活动</Comment>
+      <DataType>varchar(1000)|0</DataType>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="42" parent="11" name="datachange_createtime">
+      <Position>7</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="43" parent="11" name="datachange_lasttime">
+      <Position>8</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="44" parent="11" name="duration">
+      <Position>9</Position>
+      <Comment>教学时间</Comment>
+      <DataType>varchar(45)|0</DataType>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="45" parent="11" name="target">
+      <Position>10</Position>
+      <Comment>学习目标</Comment>
+      <DataType>varchar(45)|0</DataType>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="46" parent="11" name="book_lidou">
+      <Position>11</Position>
+      <Comment>力豆力豆配套教材</Comment>
+      <DataType>varchar(45)|0</DataType>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="47" parent="11" name="extension_activity">
+      <Position>12</Position>
+      <Comment>延伸活动</Comment>
+      <DataType>varchar(1000)|0</DataType>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="48" parent="11" name="assessment">
+      <Position>13</Position>
+      <Comment>学习评量</Comment>
+      <DataType>varchar(1000)|0</DataType>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <key id="49" parent="11" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="50" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="51" parent="12" name="activity_id">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="52" parent="12" name="figure">
+      <Position>3</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="53" parent="12" name="datachange_createtime">
+      <Position>4</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="54" parent="12" name="datachange_lasttime">
+      <Position>5</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <key id="55" parent="12" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="56" parent="13" name="area_target_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="13" name="related_sub_area_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="58" parent="13" name="name">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="59" parent="13" name="datachange_createtime">
+      <Position>4</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="60" parent="13" name="datachange_lasttime">
+      <Position>5</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <key id="61" parent="13" name="PRIMARY">
+      <ColNames>area_target_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="62" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="63" parent="14" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="64" parent="14" name="datachange_createtime">
+      <Position>3</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="65" parent="14" name="datachange_lasttime">
+      <Position>4</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <key id="66" parent="14" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="67" parent="15" name="id">
+      <Position>1</Position>
+      <Comment>book id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="68" parent="15" name="bookname">
+      <Position>2</Position>
+      <Comment>书名</Comment>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="69" parent="15" name="message">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="70" parent="15" name="publisher">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="71" parent="15" name="publication_date">
+      <Position>5</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="72" parent="15" name="edition">
+      <Position>6</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="73" parent="15" name="purchase_date">
+      <Position>7</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="74" parent="15" name="price">
+      <Position>8</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="75" parent="15" name="series">
+      <Position>9</Position>
+      <DataType>char(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="76" parent="15" name="author">
+      <Position>10</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="77" parent="15" name="language">
+      <Position>11</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="78" parent="15" name="users">
+      <Position>12</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="79" parent="15" name="datachange_createtime">
+      <Position>13</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="80" parent="15" name="datachange_lasttime">
+      <Position>14</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="81" parent="15" name="bookcover">
+      <Position>15</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="82" parent="15" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="83" parent="16" name="area_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="84" parent="16" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="85" parent="16" name="datachange_createtime">
+      <Position>3</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="86" parent="16" name="datachange_lasttime">
+      <Position>4</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="87" parent="16" name="notes">
+      <Position>5</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <key id="88" parent="16" name="PRIMARY">
+      <ColNames>area_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="89" parent="17" name="punch_id">
+      <Position>1</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="90" parent="17" name="book_id">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="91" parent="17" name="punch_createtime">
+      <Position>3</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="92" parent="17" name="datachange_createtime">
+      <Position>4</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="93" parent="17" name="datachange_lasttime">
+      <Position>5</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="94" parent="17" name="count">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="95" parent="17" name="type">
+      <Position>7</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="96" parent="17" name="PRIMARY">
+      <ColNames>punch_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="97" parent="18" name="sub_area_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="98" parent="18" name="related_major_area_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="99" parent="18" name="name">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="100" parent="18" name="datachange_createtime">
+      <Position>4</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="101" parent="18" name="datachange_lasttime">
+      <Position>5</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <key id="102" parent="18" name="PRIMARY">
+      <ColNames>sub_area_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="103" parent="19" name="id">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="104" parent="19" name="author">
+      <Position>2</Position>
+      <DataType>varchar(63)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="105" parent="19" name="message">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <key id="106" parent="19" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
